@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :band do
-    name "MyString"
-    bio "MyText"
-    start_date "2018-05-20 16:13:14"
-    end_date "2018-05-20 16:13:14"
+    name { Faker::LeagueOfLegends.champion }
+    bio { Faker::Lorem.paragraph }
+    start_date { Time.at((10.year.ago.to_f - 1.year.ago.to_f) * rand + 1.year.ago.to_f) }
+    end_date { start_date + 1.year }
   end
 end

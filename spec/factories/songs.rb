@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :song do
-    name "MyString"
+    name { Faker::Lorem.sentence }
     author nil
-    duration 1
-    date "2018-05-20 16:13:40"
+    duration { rand(200..500) }
+    date { Time.at((1.year.ago.to_f - 1.year.from_now.to_f) * rand + 1.year.from_now.to_f) }
   end
 end

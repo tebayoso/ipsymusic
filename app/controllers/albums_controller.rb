@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :update, :destroy]
+  before_action :set_album, only: %i[show update destroy]
 
   # GET /albums
   def index
@@ -39,13 +41,14 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_params
-      params.require(:album).permit(:name, :author_id, :author_type, :duration, :date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def album_params
+    params.require(:album).permit(:name, :author_id, :author_type, :duration, :date)
+  end
 end

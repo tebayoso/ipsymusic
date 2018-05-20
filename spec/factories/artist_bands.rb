@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :artist_band do
-    artist nil
-    band nil
-    joined "2018-05-20 16:13:26"
-    left "2018-05-20 16:13:26"
+    association :artist, factory: :artist, strategy: :build
+    association :band, factory: :band, strategy: :build
+    joined { Time.at((10.year.ago.to_f - 1.year.ago.to_f) * rand + 1.year.ago.to_f) }
+    left { joined + 5.years }
   end
 end

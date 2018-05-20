@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BandsController < ApplicationController
-  before_action :set_band, only: [:show, :update, :destroy]
+  before_action :set_band, only: %i[show update destroy]
 
   # GET /bands
   def index
@@ -39,13 +41,14 @@ class BandsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band
-      @band = Band.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_params
-      params.require(:band).permit(:name, :bio, :start_date, :end_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band
+    @band = Band.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_params
+    params.require(:band).permit(:name, :bio, :start_date, :end_date)
+  end
 end

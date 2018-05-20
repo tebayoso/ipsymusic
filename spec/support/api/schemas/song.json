@@ -1,0 +1,15 @@
+{
+  "id": "file:/song.json#",
+  "description": "A song or list of songs",
+  "type": "object",
+  "properties": {
+    "id" : { "type" : "integer" },
+    "name" : { "type": "string" },
+    "author_type" : { "type": "string" },
+    "author_id" : { "type": "integer" },
+    "duration" : { "type": "integer" },
+    "date" : { "type": "string", "format": "date-time" },
+    "created_at" : { "type": "string", "format": "date-time" },
+    "updated_at" : { "type": "string", "format": "date-time" }
+  }
+}

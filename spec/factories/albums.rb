@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :album do
-    name "MyString"
+    name { Faker::Lorem.sentence }
     author nil
-    duration 1
-    date "2018-05-20 16:17:06"
+    duration { rand(900..1800) }
+    date { Time.at((10.year.ago.to_f - 1.year.ago.to_f) * rand + 1.year.ago.to_f) }
   end
 end

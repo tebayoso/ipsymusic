@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :artist do
-    name "MyString"
-    bio "MyText"
-    birthdate "2018-05-20 16:13:07"
-    alter_name "MyString"
+    name { Faker::LeagueOfLegends.champion }
+    bio { Faker::Lorem.paragraph }
+    birthdate { Time.at((10.year.ago.to_f - 1.year.ago.to_f) * rand + 1.year.ago.to_f) }
+    alter_name { [Faker::Lovecraft.deity, nil].sample }
   end
 end
