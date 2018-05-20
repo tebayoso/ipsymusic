@@ -1,0 +1,51 @@
+version: "3"
+services:
+  # A Redis key-value store to serve as message queue
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379"
+    networks:
+      - frontend
+
+  # An ElasticSearch to improve search queries
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.4
+    ports:
+      - "9200"
+    networks:
+      - backend
+
+  # A PostgreSQL database for persistent storage
+  db:
+    image: mysql:5.7
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ipsyMusicIsTheBest
+      MYSQL_DATABASE: ipsy_music_db
+      MYSQL_USER: ipsyUser
+      MYSQL_PASSWORD: ipsyPassw0rd
+
+  # Web UI for voting
+  api:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+    depends_on:
+      - redis
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db-data:
