@@ -3,15 +3,12 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: root
-  socket: /tmp/mysql.sock
+  password: ipsyMusicIsTheBest
+  host: db
 
 development:
   <<: *default
   database: ipsy_music_db
-  username: root
-  password: ipsyMusicIsTheBest
-  host: db
 
 
 test:
