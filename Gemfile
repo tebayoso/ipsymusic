@@ -16,6 +16,12 @@ gem 'swagger-blocks'
 gem 'swagger_ui_engine'
 gem 'searchkick'
 
+gem 'capistrano', '~> 3.7', '>= 3.7.1'
+gem 'capistrano-rails', '~> 1.2'
+
+# Add this if you're using rbenv
+gem 'capistrano-rbenv', '~> 2.1'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -24,7 +30,6 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
