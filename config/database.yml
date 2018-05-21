@@ -8,7 +8,10 @@ default: &default
 
 development:
   <<: *default
-  database: ipsyapi_development
+  database: ipsy_music_db
+  username: root
+  password: ipsyMusicIsTheBest
+  host: db
 
 test:
   <<: *default
