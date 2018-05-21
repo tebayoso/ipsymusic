@@ -43,6 +43,12 @@ To move directly to an already setup environment, go full docker:
 
     $ docker-compose up
 
+## Documentation
+
+You can find the documentation for the API under this url:
+
+http://138.68.164.105/api_docs
+
 ## Deploy
 
 - I wanted to go full CI over AWS, but didn't had enough time, I decided to go with Capistrano and Digital Ocean.
