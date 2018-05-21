@@ -12,6 +12,12 @@ RSpec.describe AlbumsController, type: :controller do
     FactoryBot.attributes_for(:album, author_type: author.class, author_id: author.id)
   end
 
+  let(:valid_attributes_with_songs) do
+    artist = FactoryBot.create(:artist)
+    songs = FactoryBot.create_list(:song, 10, author: artist)
+    FactoryBot.attributes_for(:playlist).merge(song_ids: songs)
+  end
+
   let(:invalid_attributes) do
     FactoryBot.attributes_for(:album, name: nil, author_type: author.class, author_id: author.id)
   end

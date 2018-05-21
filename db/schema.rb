@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_20_191711) do
+ActiveRecord::Schema.define(version: 2018_05_21_130215) do
 
   create_table "album_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "song_id"
@@ -61,6 +61,23 @@ ActiveRecord::Schema.define(version: 2018_05_20_191711) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlist_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "song_id"
+    t.bigint "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
+    t.index ["song_id"], name: "index_playlist_songs_on_song_id"
+  end
+
+  create_table "playlists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "author"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "author_type"
@@ -76,4 +93,6 @@ ActiveRecord::Schema.define(version: 2018_05_20_191711) do
   add_foreign_key "album_songs", "songs"
   add_foreign_key "artist_bands", "artists"
   add_foreign_key "artist_bands", "bands"
+  add_foreign_key "playlist_songs", "playlists"
+  add_foreign_key "playlist_songs", "songs"
 end

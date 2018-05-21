@@ -4,3 +4,5 @@ rails g model artist_band artist:references band:references joined:datetime left
 rails g scaffold song name:string author:references{polymorphic} duration:integer date:datetime
 rails g scaffold album name:string author:references{polymorphic} duration:integer date:datetime
 rails g model album_song song:references album:references
+rails g scaffold playlist name:string author:string date:datetime
+rails g model playlist_song song:references playlist:references

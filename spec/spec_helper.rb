@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'json_matchers/rspec'
-require 'faker'
 
 JsonMatchers.schema_root = '/spec/support/api/schemas'
 
