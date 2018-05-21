@@ -12,7 +12,7 @@ class AlbumsController < ApplicationController
       @albums = Album.all
     end
 
-    render json: @albums
+    render json: @albums, include: [:songs]
   end
 
   # GET /albums/1

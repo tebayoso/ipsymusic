@@ -1,4 +1,4 @@
-artists = FactoryBot.create_list(:artist, 1000)
+artists = FactoryBot.create_list(:artist, 100)
 artists.each do |art|
   10.times do
     album = FactoryBot.create(:album, author: art)

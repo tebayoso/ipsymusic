@@ -1,4 +1,4 @@
-class AlbumSerializer < ActiveModelSerializers::Model
+class AlbumSerializer < ActiveModel::Serializer
   attributes :name, :author, :date
   has_many :songs
 end
