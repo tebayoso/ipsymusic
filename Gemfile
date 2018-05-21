@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'faker'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
 gem 'searchkick'
