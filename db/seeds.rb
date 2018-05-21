@@ -1,3 +1,7 @@
+Artist.reindex
+Album.reindex
+Song.reindex
+Playlist.reindex
 artists = FactoryBot.create_list(:artist, 100)
 artists.each do |art|
   10.times do

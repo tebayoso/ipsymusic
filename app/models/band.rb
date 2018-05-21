@@ -47,4 +47,6 @@ class Band < ApplicationRecord
   validates :name, presence: true
   has_many :artist_bands
   has_many :artists, through: :artist_bands, source: :artist
+  has_many :songs, as: :author
+  has_many :albums, as: :author
 end
