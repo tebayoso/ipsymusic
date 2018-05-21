@@ -15,6 +15,7 @@ gem 'faker'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
 gem 'searchkick'
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'

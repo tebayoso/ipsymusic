@@ -24,12 +24,19 @@ module BandDocumentation
         end
       end
     end
-    swagger_path '/bands' do
+    swagger_path '/bands/?term={term}' do
       operation :get do
         key :summary, 'Retrieve all bands'
         key :description, 'Retrieves all bands with all data attributes'
         key :bandId, 'findAllBands'
         key :tags, ['band']
+        parameter do
+          key :name, :term
+          key :in, :path
+          key :description, 'Search Term'
+          key :required, false
+          key :type, :string
+        end
         response 200 do
           key :description, 'Band response'
           schema do

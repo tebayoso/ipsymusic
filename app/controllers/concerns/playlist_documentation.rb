@@ -24,12 +24,19 @@ module PlaylistDocumentation
         end
       end
     end
-    swagger_path '/playlists' do
+    swagger_path '/playlists/?term={term}' do
       operation :get do
         key :summary, 'Retrieve all playlists'
         key :description, 'Retrieves all playlists with all data attributes'
         key :playlistId, 'findAllPlaylists'
         key :tags, ['playlist']
+        parameter do
+          key :name, :term
+          key :in, :path
+          key :description, 'Search Term'
+          key :required, false
+          key :type, :string
+        end
         response 200 do
           key :description, 'Playlist response'
           schema do

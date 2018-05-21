@@ -24,12 +24,19 @@ module SongDocumentation
         end
       end
     end
-    swagger_path '/songs' do
+    swagger_path '/songs/?term={term}' do
       operation :get do
         key :summary, 'Retrieve all songs'
         key :description, 'Retrieves all songs with all data attributes'
         key :songId, 'findAllSongs'
         key :tags, ['song']
+        parameter do
+          key :name, :term
+          key :in, :path
+          key :description, 'Search Term'
+          key :required, false
+          key :type, :string
+        end
         response 200 do
           key :description, 'Song response'
           schema do

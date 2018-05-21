@@ -24,12 +24,19 @@ module ArtistDocumentation
         end
       end
     end
-    swagger_path '/artists' do
+    swagger_path '/artists/?term={term}' do
       operation :get do
         key :summary, 'Retrieve all artists'
         key :description, 'Retrieves all artists with all data attributes'
         key :artistId, 'findAllArtists'
         key :tags, ['artist']
+        parameter do
+          key :name, :term
+          key :in, :path
+          key :description, 'Search Term'
+          key :required, false
+          key :type, :string
+        end
         response 200 do
           key :description, 'Artist response'
           schema do

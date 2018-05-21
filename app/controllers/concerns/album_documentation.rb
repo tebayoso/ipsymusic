@@ -24,12 +24,19 @@ module AlbumDocumentation
         end
       end
     end
-    swagger_path '/albums' do
+    swagger_path '/albums/?term={term}' do
       operation :get do
         key :summary, 'Retrieve all albums'
         key :description, 'Retrieves all albums with all data attributes'
         key :albumId, 'findAllalbums'
         key :tags, ['album']
+        parameter do
+          key :name, :term
+          key :in, :path
+          key :description, 'Search Term'
+          key :required, false
+          key :type, :string
+        end
         response 200 do
           key :description, 'album response'
           schema do
