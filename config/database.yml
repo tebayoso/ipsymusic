@@ -9,6 +9,9 @@ default: &default
 development:
   <<: *default
   database: ipsy_music_db
+  username: root
+  password: ipsyMusicIsTheBest
+  host: db
 
 
 test:
