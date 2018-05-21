@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
+gem 'searchkick'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

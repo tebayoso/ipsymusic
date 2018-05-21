@@ -28,10 +28,26 @@ RSpec.describe AlbumsController, type: :controller do
   let(:valid_session) { {} }
 
   describe 'GET #index' do
+    after :each do
+      Album.searchkick_index.delete
+    end
+
     it 'returns a success response' do
       album = Album.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
+    end
+
+    it 'searches in the database if the params query is present' do
+      Album.reindex
+      album = Album.create valid_attributes.merge(name: 'XXXXXXXX')
+      artist = FactoryBot.create(:artist)
+      FactoryBot.create_list(:album, 10, author: artist)
+      Album.reindex
+      get :index, params: { term: album.name }, session: valid_session
+      json_response = JSON.parse(response.body)
+      expect(response).to be_successful
+      expect(json_response.count).to eq(1)
     end
   end
 

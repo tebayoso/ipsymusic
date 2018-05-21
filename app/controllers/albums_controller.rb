@@ -6,7 +6,11 @@ class AlbumsController < ApplicationController
 
   # GET /albums
   def index
-    @albums = Album.all
+    if params[:term].present?
+      @albums = Album.search(params[:term], limit: 10).results
+    else
+      @albums = Album.all
+    end
 
     render json: @albums
   end
