@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_05_21_130215) do
 
-  create_table "album_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "album_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "song_id"
     t.bigint "album_id"
     t.datetime "created_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.index ["song_id"], name: "index_album_songs_on_song_id"
   end
 
-  create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "author_type"
     t.bigint "author_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.index ["author_type", "author_id"], name: "index_albums_on_author_type_and_author_id"
   end
 
-  create_table "artist_bands", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "artist_bands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "band_id"
     t.datetime "joined"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.index ["band_id"], name: "index_artist_bands_on_band_id"
   end
 
-  create_table "artists", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.datetime "birthdate"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "bands", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "bands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.datetime "start_date"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "playlist_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "playlist_songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "song_id"
     t.bigint "playlist_id"
     t.datetime "created_at", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.index ["song_id"], name: "index_playlist_songs_on_song_id"
   end
 
-  create_table "playlists", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "playlists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "author"
     t.datetime "date"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_130215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "songs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "songs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "author_type"
     t.bigint "author_id"

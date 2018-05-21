@@ -94,5 +94,30 @@ module AlbumDocumentation
         end
       end
     end
+    swagger_path '/albums/{id}' do
+      operation :delete do
+        key :summary, 'Deletes a single album'
+        key :description, 'Deletes an album with the list of songs'
+        key :operationId, 'deleteAlbum'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'album'
+        ]
+        parameter do
+          key :name, :id
+          key :in, :path
+          key :description, 'Album to delete in the library'
+          key :required, true
+        end
+        response 200 do
+          key :description, 'Album response'
+          schema do
+            key :'$ref', :Album
+          end
+        end
+      end
+    end
   end
 end

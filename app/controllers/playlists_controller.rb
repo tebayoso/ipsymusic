@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
+  include PlaylistDocumentation
   before_action :set_playlist, only: %i[show update destroy]
 
   # GET /playlists
   def index
-    @playlists = Playlist.all
+    if params[:term].present?
+      @playlists = Playlist.search(params[:term], limit: 10).results
+    else
+      @playlists = Playlist.all
+    end
 
     render json: @playlists
   end

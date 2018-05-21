@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class SongsController < ApplicationController
+  include SongDocumentation
   before_action :set_song, only: %i[show update destroy]
 
   # GET /songs
   def index
-    @songs = Song.all
+    if params[:term].present?
+      @songs = Song.search(params[:term], limit: 10).results
+    else
+      @songs = Song.all
+    end
 
     render json: @songs
   end

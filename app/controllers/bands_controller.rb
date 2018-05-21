@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class BandsController < ApplicationController
+  include BandDocumentation
   before_action :set_band, only: %i[show update destroy]
 
   # GET /bands
   def index
-    @bands = Band.all
+    if params[:term].present?
+      @bands = Band.search(params[:term], limit: 10).results
+    else
+      @bands = Band.all
+    end
 
     render json: @bands
   end
@@ -49,6 +54,6 @@ class BandsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def band_params
-    params.require(:band).permit(:name, :bio, :start_date, :end_date)
+    params.require(:band).permit(:name, :bio, :start_date, :end_date, artists: [])
   end
 end

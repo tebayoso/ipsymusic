@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class ArtistsController < ApplicationController
+  include ArtistDocumentation
   before_action :set_artist, only: %i[show update destroy]
 
   # GET /artists
   def index
-    @artists = Artist.all
+    if params[:term].present?
+      @artists = Artist.search(params[:term], limit: 10).results
+    else
+      @artists = Artist.all
+    end
 
     render json: @artists
   end

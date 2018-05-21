@@ -25,6 +25,38 @@ class ApidocsController < ActionController::Base
         key :url, ''
       end
     end
+    tag do
+      key :name, 'playlist'
+      key :description, 'Playlists Operations'
+      externalDocs do
+        key :description, 'Find more info here'
+        key :url, ''
+      end
+    end
+    tag do
+      key :name, 'song'
+      key :description, 'Songs Operations'
+      externalDocs do
+        key :description, 'Find more info here'
+        key :url, ''
+      end
+    end
+    tag do
+      key :name, 'band'
+      key :description, 'Bands Operations'
+      externalDocs do
+        key :description, 'Find more info here'
+        key :url, ''
+      end
+    end
+    tag do
+      key :name, 'artist'
+      key :description, 'Artists Operations'
+      externalDocs do
+        key :description, 'Find more info here'
+        key :url, ''
+      end
+    end
     key :host, 'localhost:3000'
     key :basePath, '/'
     key :consumes, ['application/json']
@@ -35,6 +67,14 @@ class ApidocsController < ActionController::Base
   SWAGGERED_CLASSES = [
     AlbumsController,
     Album,
+    PlaylistsController,
+    Playlist,
+    ArtistsController,
+    Artist,
+    BandsController,
+    Band,
+    SongsController,
+    Song,
     self
   ].freeze
 

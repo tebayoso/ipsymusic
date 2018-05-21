@@ -4,7 +4,7 @@ class Album < ApplicationRecord
   include Swagger::Blocks
 
   swagger_schema :Album do
-    key :required, %i[id name]
+    key :required, %i[name]
     property :name do
       key :type, :string
     end
