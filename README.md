@@ -47,7 +47,7 @@ To move directly to an already setup environment, go full docker:
 
 You can find the documentation for the API under this url:
 
-http://138.68.164.105/api_docs
+http://138.68.164.105:3000/api_docs
 
 ## Deploy
 
