@@ -6,13 +6,25 @@ services:
     ports:
       - "6379"
     networks:
-      - frontend
+      - backend
 
   # An ElasticSearch to improve search queries
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.4
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+    container_name: elasticsearch
+    environment:
+      - ELASTIC_PASSWORD=espassword
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
     ports:
-      - "9200"
+      - 9200:9200
     networks:
       - backend
 
@@ -43,6 +55,10 @@ services:
       - backend
     depends_on:
       - redis
+      - db
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_URL: elasticsearch
 
 networks:
   frontend:
@@ -50,3 +66,4 @@ networks:
 
 volumes:
   db-data:
+  esdata1:
