@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AlbumsController < ApplicationController
+  include AlbumDocumentation
   before_action :set_album, only: %i[show update destroy]
 
   # GET /albums
@@ -44,11 +45,11 @@ class AlbumsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_album
-    @album = Album.find(params[:id])
+    @album = Album.find_by_id(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def album_params
-    params.require(:album).permit(:name, :author_id, :author_type, :duration, :date, song_ids: [])
+    params.require(:album).permit(:name, :author_id, :author_type, :date, song_ids: [])
   end
 end

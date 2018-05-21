@@ -12,10 +12,11 @@ gem 'redis', '~> 4.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'swagger-blocks'
+gem 'swagger_ui_engine'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec_api_documentation'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3'
 end
