@@ -19,26 +19,31 @@ class Band < ApplicationRecord
       key :type, :string
       key :format, :dateTime
     end
-    property :artist_ids do
+    property :artist_bands_attributes do
       key :type, :array
       items do
-        key :type, :integer
-        key :format, :int64
+        property :artist_id do
+          key :description, 'Artist ID'
+          key :type, :integer
+          key :format, :int64
+        end
+        property :joined do
+          key :description, 'Date in which the artist joined the band'
+          key :type, :string
+          key :format, :dateTime
+        end
+        property :left do
+          key :description, 'Date in which the artist left the band'
+          key :type, :string
+          key :format, :dateTime
+        end
       end
     end
   end
   swagger_schema :BandInput do
-    allOf do
-      schema do
-        key :'$ref', :Band
-      end
-      schema do
-        key :required, [:name]
-        property :id do
-          key :type, :integer
-          key :format, :int64
-        end
-      end
+    key :id, :BandInput
+    property :band do
+      key :'$ref', :Band
     end
   end
 
@@ -46,6 +51,7 @@ class Band < ApplicationRecord
 
   validates :name, presence: true
   has_many :artist_bands
+  accepts_nested_attributes_for :artist_bands
   has_many :artists, through: :artist_bands, source: :artist
   has_many :songs, as: :author
   has_many :albums, as: :author

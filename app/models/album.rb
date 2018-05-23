@@ -9,13 +9,16 @@ class Album < ApplicationRecord
       key :type, :string
     end
     property :author_id do
+      key :description, 'The author id in the database'
       key :type, :integer
       key :format, :int64
     end
     property :author_type do
+      key :description, 'The Author type, options=[Band, Artist]'
       key :type, :string
     end
     property :date do
+      key :description, 'format=[mm/dd/yyyy]'
       key :type, :string
       key :format, :dateTime
     end
@@ -28,24 +31,16 @@ class Album < ApplicationRecord
     end
   end
   swagger_schema :AlbumInput do
-    allOf do
-      schema do
-        key :'$ref', :Album
-      end
-      schema do
-        key :required, [:name]
-        property :id do
-          key :type, :integer
-          key :format, :int64
-        end
-      end
+    key :id, :AlbumInput
+    property :album do
+      key :'$ref', :Album
     end
   end
 
   searchkick
 
   belongs_to :author, polymorphic: true
-  has_many :album_songs
+  has_many :album_songs, dependent: :destroy
   has_many :songs, through: :album_songs, source: :song
 
   validates :name, presence: true, uniqueness: { scope: %i[author] }

@@ -35,10 +35,10 @@ class Song < ApplicationRecord
   searchkick
 
   belongs_to :author, polymorphic: true
-  has_many :album_songs
+  has_many :album_songs, dependent: :destroy
   has_many :albums, through: :album_songs, source: :album
 
-  has_many :playlist_songs
+  has_many :playlist_songs, dependent: :destroy
   has_many :playlist, through: :playlist_songs, source: :playlist
 
   validates :name, presence: true, uniqueness: { scope: %i[author duration date] }

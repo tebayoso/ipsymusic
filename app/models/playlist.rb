@@ -44,7 +44,7 @@ class Playlist < ApplicationRecord
 
   searchkick
 
-  has_many :playlist_songs
+  has_many :playlist_songs, dependent: :destroy
   has_many :songs, through: :playlist_songs, source: :song
 
   validates :name, presence: true, uniqueness: { scope: [:author] }
