@@ -6,13 +6,18 @@ class AlbumsController < ApplicationController
 
   # GET /albums
   def index
+    @albums = Album.includes(:author, :songs)
     if params[:term].present?
-      @albums = Album.search(params[:term], limit: 10).results
+      @albums = @albums.search(params[:term], limit: results_limit).results
     else
-      @albums = Album.all
+      @albums = @albums.limit(results_limit)
     end
 
-    render json: @albums, include: [:songs]
+    options = {}.tap do |opt|
+      opt[:meta] = { total: @albums.count }
+    end
+
+    render json: AlbumSerializer.new(@albums, options).serialized_json
   end
 
   # GET /albums/1

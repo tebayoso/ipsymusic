@@ -24,7 +24,7 @@ module BandDocumentation
         end
       end
     end
-    swagger_path '/bands/?term={term}' do
+    swagger_path '/bands/' do
       operation :get do
         key :summary, 'Retrieve all bands'
         key :description, 'Retrieves all bands with all data attributes'
@@ -32,10 +32,17 @@ module BandDocumentation
         key :tags, ['band']
         parameter do
           key :name, :term
-          key :in, :path
+          key :in, :query
           key :description, 'Search Term'
           key :required, false
           key :type, :string
+        end
+        parameter do
+          key :name, :limit
+          key :in, :query
+          key :description, 'Results Limit [Default = 1000]'
+          key :required, false
+          key :type, :integer
         end
         response 200 do
           key :description, 'Band response'
