@@ -6,13 +6,18 @@ class BandsController < ApplicationController
 
   # GET /bands
   def index
+    @bands = Band.includes(:albums, :artists)
     if params[:term].present?
-      @bands = Band.search(params[:term], limit: 10).results
+      @bands = @bands.search(params[:term], limit: results_limit).results
     else
-      @bands = Band.all
+      @bands = @bands.limit(results_limit)
     end
 
-    render json: @bands
+    options = {}.tap do |opt|
+      opt[:meta] = { total: @bands.count }
+    end
+
+    render json: BandSerializer.new(@bands, options).serialized_json
   end
 
   # GET /bands/1

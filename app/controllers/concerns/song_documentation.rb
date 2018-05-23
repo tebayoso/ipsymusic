@@ -24,7 +24,7 @@ module SongDocumentation
         end
       end
     end
-    swagger_path '/songs/?term={term}' do
+    swagger_path '/songs/' do
       operation :get do
         key :summary, 'Retrieve all songs'
         key :description, 'Retrieves all songs with all data attributes'
@@ -32,10 +32,17 @@ module SongDocumentation
         key :tags, ['song']
         parameter do
           key :name, :term
-          key :in, :path
+          key :in, :query
           key :description, 'Search Term'
           key :required, false
           key :type, :string
+        end
+        parameter do
+          key :name, :limit
+          key :in, :query
+          key :description, 'Results Limit [Default = 1000]'
+          key :required, false
+          key :type, :integer
         end
         response 200 do
           key :description, 'Song response'

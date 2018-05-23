@@ -47,7 +47,7 @@ RSpec.describe AlbumsController, type: :controller do
       get :index, params: { term: album.name }, session: valid_session
       json_response = JSON.parse(response.body)
       expect(response).to be_successful
-      expect(json_response.count).to eq(1)
+      expect(json_response["meta"]["total"]).to eq(1)
     end
   end
 
