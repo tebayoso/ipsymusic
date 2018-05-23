@@ -6,13 +6,18 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists
   def index
+    @playlists = Playlist.includes(:songs)
     if params[:term].present?
-      @playlists = Playlist.search(params[:term], limit: 10).results
+      @playlists = @playlists.search(params[:term], limit: results_limit).results
     else
-      @playlists = Playlist.all
+      @playlists = @playlists.limit(results_limit)
     end
 
-    render json: @playlists
+    options = {}.tap do |opt|
+      opt[:meta] = { total: @playlists.count }
+    end
+
+    render json: PlaylistSerializer.new(@playlists, options).serialized_json
   end
 
   # GET /playlists/1

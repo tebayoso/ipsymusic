@@ -33,4 +33,5 @@ class Artist < ApplicationRecord
   has_many :artist_bands
   has_many :bands, through: :artist_bands, source: :artist
   has_many :songs, as: :author
+  has_many :albums, as: :author
 end

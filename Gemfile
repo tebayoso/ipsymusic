@@ -5,17 +5,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'faker'
+gem 'fast_jsonapi'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
-
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'faker'
+gem 'searchkick'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
-gem 'searchkick'
-gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'

@@ -24,7 +24,7 @@ module AlbumDocumentation
         end
       end
     end
-    swagger_path '/albums/?term={term}' do
+    swagger_path '/albums/' do
       operation :get do
         key :summary, 'Retrieve all albums'
         key :description, 'Retrieves all albums with all data attributes'
@@ -32,10 +32,17 @@ module AlbumDocumentation
         key :tags, ['album']
         parameter do
           key :name, :term
-          key :in, :path
+          key :in, :query
           key :description, 'Search Term'
           key :required, false
           key :type, :string
+        end
+        parameter do
+          key :name, :limit
+          key :in, :query
+          key :description, 'Results Limit [Default = 1000]'
+          key :required, false
+          key :type, :integer
         end
         response 200 do
           key :description, 'album response'
