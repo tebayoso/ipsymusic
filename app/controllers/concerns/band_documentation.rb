@@ -55,7 +55,7 @@ module BandDocumentation
     swagger_path '/bands' do
       operation :post do
         key :summary, 'Creates a new Band'
-        key :description, 'Creates a new Band with a list of songs'
+        key :description, 'Creates a new Band with a list of artists'
         key :operationId, 'addBand'
         key :produces, [
           'application/json'
@@ -72,7 +72,7 @@ module BandDocumentation
             key :'$ref', :BandInput
           end
         end
-        response 200 do
+        response 201 do
           key :description, 'Band response'
           schema do
             key :'$ref', :Band
@@ -83,7 +83,7 @@ module BandDocumentation
     swagger_path '/bands/{id}' do
       operation :put do
         key :summary, 'Updates a single band'
-        key :description, 'Updates an Band with a list of songs'
+        key :description, 'Updates an Band with a list of artists'
         key :operationId, 'updateBand'
         key :produces, [
           'application/json'
@@ -94,7 +94,15 @@ module BandDocumentation
         parameter do
           key :name, :id
           key :in, :path
-          key :description, 'Band to update in the library'
+          key :description, 'Id of the Band to update in the library'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+        end
+        parameter do
+          key :name, :band
+          key :in, :body
+          key :description, 'Band attributes'
           key :required, true
           schema do
             key :'$ref', :BandInput

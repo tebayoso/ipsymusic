@@ -94,7 +94,18 @@ module ArtistDocumentation
         parameter do
           key :name, :id
           key :in, :path
-          key :description, 'Artist to update in the library'
+          key :description, 'ID of artist to update in the library'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+          schema do
+            key :'$ref', :ArtistInput
+          end
+        end
+        parameter do
+          key :name, :artist
+          key :in, :body
+          key :description, 'Artist to update to the library'
           key :required, true
           schema do
             key :'$ref', :ArtistInput

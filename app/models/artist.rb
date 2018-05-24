@@ -20,18 +20,17 @@ class Artist < ApplicationRecord
     end
   end
   swagger_schema :ArtistInput do
-    allOf do
-      schema do
-        key :'$ref', :Artist
-      end
+    key :id, :ArtistInput
+    property :artist do
+      key :'$ref', :Artist
     end
   end
 
   searchkick
 
   validates :name, presence: true, uniqueness: true
-  has_many :artist_bands
+  has_many :artist_bands, dependent: :destroy
   has_many :bands, through: :artist_bands, source: :artist
-  has_many :songs, as: :author
-  has_many :albums, as: :author
+  has_many :songs, as: :author, dependent: :destroy
+  has_many :albums, as: :author, dependent: :destroy
 end
