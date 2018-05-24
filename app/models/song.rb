@@ -38,7 +38,7 @@ class Song < ApplicationRecord
   has_many :albums, through: :album_songs, source: :album
 
   has_many :playlist_songs, dependent: :destroy
-  has_many :playlist, through: :playlist_songs, source: :playlist
+  has_many :playlists, through: :playlist_songs, source: :playlist
 
   validates :name, presence: true, uniqueness: { scope: %i[author duration date] }
 end
