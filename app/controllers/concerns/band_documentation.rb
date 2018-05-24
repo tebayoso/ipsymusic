@@ -94,8 +94,10 @@ module BandDocumentation
         parameter do
           key :name, :id
           key :in, :path
-          key :description, 'Band to update in the library'
+          key :description, 'Id of the Band to update in the library'
           key :required, true
+          key :type, :integer
+          key :format, :int64
         end
         parameter do
           key :name, :band

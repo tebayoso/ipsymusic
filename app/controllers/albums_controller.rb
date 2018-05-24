@@ -22,7 +22,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1
   def show
-    render json: @album
+    render json: AlbumSerializer.new(@album).serialized_json
   end
 
   # POST /albums

@@ -94,7 +94,15 @@ module SongDocumentation
         parameter do
           key :name, :id
           key :in, :path
-          key :description, 'Song to update in the library'
+          key :description, 'ID of Song to update in the library'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+        end
+        parameter do
+          key :name, :song
+          key :in, :body
+          key :description, 'Song Attributes to update to the library'
           key :required, true
           schema do
             key :'$ref', :SongInput

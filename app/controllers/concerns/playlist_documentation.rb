@@ -96,6 +96,8 @@ module PlaylistDocumentation
           key :in, :path
           key :description, 'Playlist to update in the library'
           key :required, true
+          key :type, :integer
+          key :format, :int64
           schema do
             key :'$ref', :PlaylistInput
           end

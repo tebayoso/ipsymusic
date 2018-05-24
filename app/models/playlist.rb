@@ -28,17 +28,9 @@ class Playlist < ApplicationRecord
     end
   end
   swagger_schema :PlaylistInput do
-    allOf do
-      schema do
-        key :'$ref', :Playlist
-      end
-      schema do
-        key :required, [:name]
-        property :id do
-          key :type, :integer
-          key :format, :int64
-        end
-      end
+    key :id, :PlaylistInput
+    property :playlist do
+      key :'$ref', :Playlist
     end
   end
 

@@ -4,7 +4,7 @@ class Song < ApplicationRecord
   include Swagger::Blocks
 
   swagger_schema :Song do
-    key :required, %i[id name]
+    key :required, %i[name]
     property :name do
       key :type, :string
     end
@@ -25,10 +25,9 @@ class Song < ApplicationRecord
     end
   end
   swagger_schema :SongInput do
-    allOf do
-      schema do
-        key :'$ref', :Song
-      end
+    key :id, :SongInput
+    property :song do
+      key :'$ref', :Song
     end
   end
 

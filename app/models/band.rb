@@ -50,7 +50,7 @@ class Band < ApplicationRecord
   searchkick
 
   validates :name, presence: true
-  has_many :artist_bands
+  has_many :artist_bands, dependent: :destroy
   accepts_nested_attributes_for :artist_bands
   has_many :artists, through: :artist_bands, source: :artist
   has_many :songs, as: :author

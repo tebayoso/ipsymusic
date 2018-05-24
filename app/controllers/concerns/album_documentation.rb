@@ -94,6 +94,17 @@ module AlbumDocumentation
         parameter do
           key :name, :id
           key :in, :path
+          key :description, 'Id of the Album to update in the library'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+          schema do
+            key :'$ref', :AlbumInput
+          end
+        end
+        parameter do
+          key :name, :album
+          key :in, :body
           key :description, 'Album to update in the library'
           key :required, true
           schema do
