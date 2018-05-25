@@ -1,0 +1,36 @@
+artifacts:
+  files:
+  - config.ru
+  - Gemfile
+  - README.md
+  - Rakefile
+  - app/**/*
+  - config/**/*
+  - db/**/*
+  - log/**/*
+  - public/**/*
+  - vendor/**/*
+  - node_modules/**/*
+  type: zip
+packages:
+  yum:
+    git: []
+    patch: []
+    gcc: []
+    libxml2: []
+    libxml2-devel: []
+    libxslt: []
+    libxslt-devel: []
+    libgmp-dev: []
+phases:
+  install:
+    commands:
+    - bundle install
+    - yarn install
+  pre_build:
+    commands:
+    # - rspec
+  post_build:
+    commands:
+
+version: 0.2
