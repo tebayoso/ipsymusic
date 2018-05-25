@@ -17,10 +17,10 @@ gem 'redis', '~> 4.0'
 gem 'searchkick'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
+gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3'
 end
 
