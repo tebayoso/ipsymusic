@@ -57,7 +57,7 @@ class ApidocsController < ActionController::Base
         key :url, ''
       end
     end
-    key :host, 'localhost:3000'
+    key :host, ENV['HOST']
     key :basePath, '/'
     key :consumes, ['application/json']
     key :produces, ['application/json']
