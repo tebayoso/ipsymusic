@@ -18,12 +18,6 @@ gem 'searchkick'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
 
-gem 'capistrano', '~> 3.7', '>= 3.7.1'
-gem 'capistrano-rails', '~> 1.2'
-
-# Add this if you're using rbenv
-gem 'capistrano-rbenv', '~> 2.1'
-
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
