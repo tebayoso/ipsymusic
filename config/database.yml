@@ -17,6 +17,3 @@ test:
 
 production:
   <<: *default
-  database: ipsyapi_production
-  username: ipsyapi
-  password: <%= ENV['IPSYAPI_DATABASE_PASSWORD'] %>
