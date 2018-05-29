@@ -2,7 +2,7 @@
 
 ## Demo is here:
 
-[DEMO APP IN ELASTICBEANSTALK](ttp://ipsymusic-prod.us-east-1.elasticbeanstalk.com/api_docs/single_swagger_doc)
+[DEMO APP IN ELASTICBEANSTALK](http://ipsymusic-prod.us-east-1.elasticbeanstalk.com/api_docs/single_swagger_doc)
 
 ## Requirements
 
