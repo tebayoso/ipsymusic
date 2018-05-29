@@ -1,5 +1,11 @@
 # Welcome to IpsyMusic!
 
+## Demo is here:
+
+[DEMO APP IN ELASTICBEANSTALK](ttp://ipsymusic-prod.us-east-1.elasticbeanstalk.com/api_docs/single_swagger_doc)
+
+## Requirements
+
 This Code Challenge was requested by IpsyMusic as a skill test for a Senior Ruby on Rails Engineer.
 
 -   Create API endpoints that enable the following:
@@ -26,9 +32,9 @@ Stack is composed by:
 
 - Ruby on Rails 5.2 with *--api* downgrade.
 - Docker and Docker Compose to build the microservices network
-  - MySQL as relational database
-  - ElasticSearch as search engine
-  - Redis, not used, but available, to handle delayed jobs.
+	- MySQL as relational database
+	- ElasticSearch as search engine
+	- Redis, not used, but available, to handle delayed jobs.
 - Swagger to document the API
 - Rspec, for full text coverage
 - ActiveModelSerializers to fasten the JSON serializing
@@ -43,27 +49,16 @@ To move directly to an already setup environment, go full docker:
 
     $ docker-compose up
 
-## Documentation
+## Deploy is automated Yeah!
 
-You can find the documentation for the API under this url:
-
-http://138.68.164.105:3000/api_docs
-
-## Deploy
-
-- I wanted to go full CI over AWS, but didn't had enough time, I decided to go with Capistrano and Digital Ocean.
-- The capistrano script works under the standard definition.
-- I configured the whole Dropplet in DO in under 1 hour following some guidelines for a common stack.
+- Full deploy is built under AWS standard practices. *CodePipeline* takes the last commit from `master`branch, builds it *CodeBuild* and deploys it to *ElasticBeanstalk*
 
 ## Pending Tasks
-- Document all resources. I documented a single one, the album resource
-- Write the callbacks and search methods for all resources
 - Unify the Albums+Playlists under a single model using Single Table Inheritance
 - Write the featured songs API (I wanted to have a better definition on this task)
-- Implement ActiveModelSerializer on all models
 
 ## Testing
-You can run the test suite inside docker containers by using:
+You can run the test suite inside docker containers by using: 
 
     $ rspec spec/
 
